@@ -29,7 +29,7 @@ def create_region():
     regionNames = ["Canterbury", "Wellington", "Auckland"]
     for regionName in regionNames:
         region = Region(
-            region=regionName
+            name=regionName
         )
         region.save()
 
@@ -44,10 +44,10 @@ def create_cities():
         ('Auckland', 'North Shore'),
     ]
     for cityName in cityNames:
-        region = Region.objects.get(region=cityName[0])
+        region = Region.objects.get(name=cityName[0])
         city = City(
             region=region,
-            city=cityName[1]
+            name=cityName[1]
         )
         city.save()
 
@@ -68,10 +68,10 @@ def create_suburbs():
         ('North Shore', 'Albany'),
     ]
     for suburbName in suburbNames:
-        city = City.objects.get(city=suburbName[0])
+        city = City.objects.get(name=suburbName[0])
         suburb = Suburb(
             city=city,
-            suburb=suburbName[1]
+            name=suburbName[1]
         )
         suburb.save()
 
