@@ -138,7 +138,8 @@ AUTH_USER_MODEL = 'core.User'
 
 CORS_ORIGIN_WHITELIST = [
     "http://localhost:3000",#Development Server
-    "https://kiwiserver-client.herokuapp.com"#Production
+    "https://kiwiserver-client.herokuapp.com",#Production
+    "https://kiwihomes-client.azurewebsites.net"
 ]
 
 ALLOWED_HOSTS = [os.environ['WEBSITE_SITE_NAME'] + '.azurewebsites.net', '127.0.0.1'] if 'WEBSITE_SITE_NAME' in os.environ else []
