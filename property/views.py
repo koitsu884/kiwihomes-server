@@ -41,7 +41,8 @@ class PropertyViewSet(viewsets.ModelViewSet):
 
     def get_queryset(self):
         """Should set filter here """
-        queryset = self.queryset
+        queryset = Property.objects.select_related(
+        'region', 'city', 'suburb').all()
 
         propertyType = self.request.query_params.get('propertyType')
         region = int(self.request.query_params.get('region')
