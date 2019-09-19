@@ -101,6 +101,7 @@ class Property(models.Model):
     propertyType = models.CharField(max_length=40)
     rooms = models.PositiveSmallIntegerField()
     price = models.PositiveIntegerField()
+    description = models.TextField(default='')
 
     def __str__(self):
         return self.title

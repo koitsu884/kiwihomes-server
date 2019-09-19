@@ -51,6 +51,14 @@ class PropertyViewSet(viewsets.ModelViewSet):
                    ) if self.request.query_params.get('city') else 0
         suburb = int(self.request.query_params.get('suburb')
                      ) if self.request.query_params.get('suburb') else 0
+        roomsFrom = int(self.request.query_params.get('roomsFrom')
+                     ) if self.request.query_params.get('roomsFrom') else 0
+        roomsTo = int(self.request.query_params.get('roomsTo')
+                   ) if self.request.query_params.get('roomsTo') else 0
+        priceTo = int(self.request.query_params.get('priceTo')
+                     ) if self.request.query_params.get('priceTo') else 0
+        priceFrom = int(self.request.query_params.get('priceFrom')
+                     ) if self.request.query_params.get('priceFrom') else 0
 
         if propertyType:
             queryset = queryset.filter(propertyType=propertyType)
@@ -63,6 +71,18 @@ class PropertyViewSet(viewsets.ModelViewSet):
 
         if suburb > 0:
             queryset = queryset.filter(suburb=suburb)
+
+        if roomsFrom > 0:
+            queryset = queryset.filter(rooms__gte=roomsFrom)
+
+        if roomsTo > 0:
+            queryset = queryset.filter(rooms__lt=roomsTo)
+
+        if priceFrom > 0:
+            queryset = queryset.filter(price__gte=priceFrom)
+
+        if priceTo > 0:
+            queryset = queryset.filter(price__lt=priceTo)
 
         return queryset
 
